@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #008F5D;
+  --color-ink: #0D1A2E;
+  --color-silver: #C0C0C0;
+  --color-primary-light: color-mix(in srgb, #008F5D 15%, transparent);
+  --color-ink-light: color-mix(in srgb, #0D1A2E 95%, transparent);
+  --color-silver-dim: color-mix(in srgb, #C0C0C0 40%, transparent);
+  
+  --font-sans: "Geist Sans", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #0D1A2E;
+    color: #C0C0C0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  ::selection {
+    background-color: color-mix(in srgb, #008F5D 40%, transparent);
+    color: #ffffff;
+  }
+  
+  :focus-visible {
+    outline: 2px solid #008F5D;
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  
+  .animate-pulse-slow {
+    animation: pulse-glow 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-dash-flow {
+    stroke-dasharray: 8 8;
+    animation: dash-flow 20s linear infinite;
+  }
+
+  .gradient-mesh {
+    background: 
+      radial-gradient(circle at 15% 20%, color-mix(in srgb, #008F5D 14%, transparent) 0%, transparent 45%),
+      radial-gradient(circle at 85% 65%, color-mix(in srgb, #008F5D 10%, transparent) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, #0D1A2E 100%, transparent) 0%, transparent 100%);
+  }
+  
+  .glass-card {
+    background: rgba(13, 26, 46, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(192, 192, 192, 0.12);
+  }
+
+  .glass-card-glow {
+    background: rgba(13, 26, 46, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 143, 93, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 143, 93, 0.12);
+  }
+  
+  .force-glow {
+    box-shadow: 0 0 45px color-mix(in srgb, #008F5D 18%, transparent);
+  }
+  
+  .force-glow-muted {
+    box-shadow: 0 0 35px color-mix(in srgb, #C0C0C0 8%, transparent);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 143, 93, 0.4);
+  }
 }

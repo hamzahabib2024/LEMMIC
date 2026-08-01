@@ -128,9 +128,9 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden gradient-mesh pt-20 pb-16">
       {/* Abstract render image background blend */}
-      <div className="absolute inset-0 z-0 opacity-25 mix-blend-screen pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-35 mix-blend-screen pointer-events-none">
         <Image
-          src="/hero-network.jpg"
+          src="/hero1.jpg"
           alt="Abstract logistics network render"
           fill
           priority

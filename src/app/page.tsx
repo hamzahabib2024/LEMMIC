@@ -15,10 +15,10 @@ export default function Home() {
       <Hero />
       <SectorStatBar />
       <SimpleFramework />
-      <About />
-      <Roadmap />
-      <FAQ />
-      <Contact />
+      {/* <About /> */}
+      {/* <Roadmap /> */}
+      {/* <FAQ /> */}
+      {/* <Contact /> */}
       <Footer />
     </>
   );

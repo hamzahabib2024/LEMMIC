@@ -1,5 +1,6 @@
 import Accordion from "./ui/accordion";
 import ScrollReveal from "./ScrollReveal";
+import Image from "next/image";
 
 const faqItems = [
   {
@@ -56,8 +57,23 @@ const faqItems = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
+    <section id="faq" className="relative overflow-hidden py-24 md:py-32">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/faq2.jpg"
+          alt="FAQ background"
+          fill
+          className="object-cover object-center opacity-80"
+        />
+    
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-ink/45" />
+      
+        {/* Soft gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/40 to-ink" />
+      </div>
+      <div className="relative z-10 mx-auto max-w-3xl px-6">
         <ScrollReveal>
           <div className="mb-4 text-center">
             <span className="text-xs font-medium tracking-[0.2em] text-silver/50 uppercase">

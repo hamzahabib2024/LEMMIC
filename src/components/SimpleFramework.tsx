@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShieldCheck,
   Route,
@@ -51,6 +52,26 @@ const simplifiedForces = [
 export default function SimpleFramework() {
   return (
     <section id="framework" className="relative overflow-hidden py-20 md:py-28">
+      
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/hero3.jpg"
+          alt="Framework background"
+          fill
+          priority
+          className="object-cover object-center opacity-75"
+        />
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-ink/50" />
+
+        {/* Soft gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/40 to-ink" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6"></div>
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal>
           <div className="mb-4 text-center">
@@ -67,7 +88,7 @@ export default function SimpleFramework() {
         </ScrollReveal>
 
         {/* 5-Card Grid Overview */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {simplifiedForces.map((force, i) => (
             <ScrollReveal key={`${force.letter}-${force.title}`} delay={i * 80}>
               <div

@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import Image from "next/image";
 
 const principles = [
   {
@@ -20,8 +21,23 @@ const principles = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="about" className="relative overflow-hidden py-24 md:py-32">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/about.jpg"
+            alt="About LEMMIC background"
+            fill
+            className="object-cover object-center opacity-80"
+          />
+
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-ink/35" />
+
+          {/* Soft gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/40 to-ink" />
+        </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <ScrollReveal>
           <div className="mb-4">
             <span className="text-xs font-medium tracking-[0.2em] text-silver/50 uppercase">

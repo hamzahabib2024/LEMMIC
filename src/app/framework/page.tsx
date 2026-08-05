@@ -16,7 +16,7 @@ export default function FrameworkPage() {
 
       <main className="relative pt-24 pb-20 flex-1 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-30" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/60" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
 
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="rounded-[2rem] border border-white/10 bg-slate-950/20 backdrop-blur-xl p-8 shadow-2xl shadow-black/40">

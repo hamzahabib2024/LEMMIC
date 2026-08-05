@@ -30,6 +30,7 @@ export default function Navbar() {
   const [modelMobileOpen, setModelMobileOpen] = useState(false);
   const pathname = usePathname();
   const modelRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -45,7 +46,10 @@ export default function Navbar() {
       }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setModelOpen(false);
+      if (e.key === "Escape") {
+        setModelOpen(false);
+        setMobileOpen(false);
+      }
     };
     document.addEventListener("click", onDocClick);
     document.addEventListener("keydown", onKey);
@@ -54,6 +58,40 @@ export default function Navbar() {
       document.removeEventListener("keydown", onKey);
     };
   }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const closeMobileMenu = (e: Event) => {
+      if (!mobileOpen || !mobileMenuRef.current) return;
+      if (e.target instanceof Node && !mobileMenuRef.current.contains(e.target)) {
+        setMobileOpen(false);
+      }
+    };
+
+    if (mobileOpen) {
+      window.addEventListener("wheel", closeMobileMenu, { passive: true });
+      window.addEventListener("touchmove", closeMobileMenu, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener("wheel", closeMobileMenu);
+      window.removeEventListener("touchmove", closeMobileMenu);
+    };
+  }, [mobileOpen]);
 
   return (
     <nav
@@ -154,7 +192,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="border-t border-silver-dim/20 bg-ink/95 backdrop-blur-xl md:hidden">
+        <div ref={mobileMenuRef} className="border-t border-silver-dim/20 bg-ink/95 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-3 px-6 py-6">
             {navLinks.map((link) => {
               const isActive =

@@ -52,6 +52,10 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-[var(--font-geist-sans)] antialiased">
         <a
           href="#main-content"

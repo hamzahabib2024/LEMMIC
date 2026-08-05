@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const navLinks = [
@@ -99,12 +99,12 @@ export default function Navbar() {
                     )}
                   >
                     {link.label}
-                    <ArrowUpRight size={14} className="transform rotate-45 opacity-70" />
+                    <ChevronDown size={14} className="opacity-70" />
                   </Link>
 
                   {modelOpen && (
                     <div
-                      className="absolute right-0 top-full w-52 rounded-md bg-ink/60 backdrop-blur-lg border border-silver-dim/10 shadow-md p-2 z-50 pointer-events-auto"
+                      className="absolute right-0 top-full w-52 rounded-md bg-ink/80 backdrop-blur-lg border border-silver-dim/10 shadow-md p-2 z-50 pointer-events-auto"
                       onMouseEnter={() => setModelOpen(true)}
                       onMouseLeave={() => setModelOpen(false)}
                     >
@@ -187,7 +187,7 @@ export default function Navbar() {
               >
                 <span>Model</span>
                 <span className={cn("transform transition-transform", modelMobileOpen ? "rotate-180" : "rotate-0")}>
-                  <ArrowUpRight size={16} />
+                  <ChevronDown size={16} />
                 </span>
               </button>
 

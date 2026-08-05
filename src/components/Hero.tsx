@@ -179,12 +179,7 @@ export default function Hero() {
             A SECTOR OF AMANORX HOLDINGS
           </span>
           <span className="text-silver/30">•</span>
-          <div className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-3 py-1 backdrop-blur-md">
-            <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs font-semibold tracking-wider text-primary uppercase">
-              Pipeline Stage
-            </span>
-          </div>
+          
         </div>
 
         {/* Title */}
